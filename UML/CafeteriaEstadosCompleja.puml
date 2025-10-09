@@ -1,0 +1,46 @@
+
+
+@startuml
+
+[*] --> IniciandoJornada: universidad abierta
+[*] --> [*]: universidad cerrada
+
+
+IniciandoJornada --> ReponiendoInventario
+
+ReponiendoInventario --> CafeteriaAbierta: inventario listo
+
+
+CafeteriaAbierta --> PreparandoProductos
+CafeteriaAbierta --> AtendiendoClientes
+
+PreparandoProductos --> AtendiendoClientes: producto listo
+AtendiendoClientes --> PreparandoProductos: enviando producto
+
+PreparandoProductos --> PreparandoProductos: en horario
+AtendiendoClientes --> AtendiendoClientes: en horario
+
+PreparandoProductos --> CafeteriaCerrada: fuera de horario
+AtendiendoClientes --> CafeteriaCerrada
+
+CafeteriaCerrada --> [*]
+
+state PreparandoProductos{
+
+    ConsultandoReceta --> RestandoInventario 
+    RestandoInventario --> ProductoEnPreparacion
+}
+
+state AtendiendoClientes{
+
+    ComunicandoProductos --> CobrandoCliente
+    CobrandoCliente --> EntregandoProducto
+}
+
+state CafeteriaAbierta{
+
+    
+}
+
+
+@enduml
