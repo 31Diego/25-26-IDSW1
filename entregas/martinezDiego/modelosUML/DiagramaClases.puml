@@ -1,0 +1,85 @@
+@startuml
+
+title: Gestión de base de datos
+
+class Tabla {
+    nombre 
+    numRegistros 
+    fechaCreacion 
+}
+
+class Llave {
+    nombre
+    tipo 
+    campos 
+}
+
+class Esquema {
+    nombre 
+    propietario 
+    descripcion 
+}
+
+class Campo {
+    nombre 
+    tipoDato 
+    esNulo 
+    longitud
+    valorPorDefecto 
+}
+
+class Restriccion {
+    tipo 
+    expresion 
+}
+
+class Consulta {
+    idConsulta 
+    sentenciaSQL 
+    fechaEjecucion 
+    tiempoEjecucion 
+}
+
+class Usuario {
+    nombre
+    contrasena
+    email 
+    activo 
+}
+
+class Rol {
+    nombreRol 
+    descripcion 
+}
+
+class Permiso {
+    nombrePermiso 
+    descripcion 
+}
+
+class Disparador {
+    nombre 
+    evento 
+    momento 
+    accion 
+}
+
+class Vista {
+    nombre 
+    esActualizable 
+}
+
+
+Tabla *-- Esquema : pertenece a 
+ Esquema *-- Campo : contiene 
+Campo <|-- Restriccion : tiene 
+Tabla <-- Consulta : se ejecuta sobre 
+Consulta *-- Usuario : ejecuta 
+Usuario *-- Rol : tiene 
+Rol *-- Permiso : tiene 
+Tabla -- Disparador : actúa sobre 
+Tabla -- Llave : tiene 
+Tabla <-- Vista : genera 
+Vista <|-- Consulta : devuelve 
+
+@enduml
