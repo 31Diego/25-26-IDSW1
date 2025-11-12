@@ -71,7 +71,7 @@ class Vista {
 
 
 Tabla *-- Esquema : pertenece a 
- Esquema *-- Campo : contiene 
+Esquema *-- Campo : contiene 
 Campo <|-- Restriccion : tiene 
 Tabla <-- Consulta : se ejecuta sobre 
 Consulta *-- Usuario : ejecuta 
