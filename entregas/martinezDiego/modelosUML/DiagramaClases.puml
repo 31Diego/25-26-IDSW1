@@ -1,74 +1,68 @@
 @startuml
 
-title: Gestión de base de datos
+title Clases gestor BDD
 
 class Tabla {
-    nombre 
-    numRegistros 
-    fechaCreacion 
+    nombre
 }
 
 class Llave {
-    nombre
-    tipo 
-    campos 
+    esPrimaria
+    esForanea
 }
 
 class Esquema {
-    nombre 
-    propietario 
-    descripcion 
+    
 }
 
 class Campo {
-    nombre 
-    tipoDato 
-    esNulo 
+    nombre
+    tipoDato
+    cotejamiento
     longitud
-    valorPorDefecto 
+    esClave
+    esAutoIncremental
 }
 
 class Restriccion {
-    tipo 
-    expresion 
+    nombre
+    tipo
 }
 
 class Consulta {
-    idConsulta 
-    sentenciaSQL 
-    fechaEjecucion 
-    tiempoEjecucion 
+    sentencia
+    tipoConsulta
 }
 
 class Usuario {
     nombre
     contrasena
-    email 
-    activo 
 }
 
 class Rol {
-    nombreRol 
-    descripcion 
+    nombreRol
+    descripcion
 }
 
 class Permiso {
-    nombrePermiso 
-    descripcion 
+    nombrePermiso
+    descripcion
 }
 
 class Disparador {
-    nombre 
-    evento 
-    momento 
-    accion 
+    nombre
+    evento
+    momento
+    accion
+    condicion
 }
 
 class Vista {
-    nombre 
-    esActualizable 
+    nombre
+    esActualizable
+    sentencia
+    fechaCreacion
 }
-
 
 Tabla *-- Esquema : pertenece a 
 Esquema *-- Campo : contiene 
